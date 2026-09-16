@@ -3,172 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon clone</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Amazon Clone - Fully Functional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header / Navbar -->
     <header>
         <div class="navbar">
-            <div class="navlogo border">
+            <div class="nav-logo border">
                 <div class="logo"></div>
             </div>
-            <div class="nav-address border">
+
+            <div class="nav-address border" id="addressBtn" title="Choose delivery address">
                 <p class="add-first">Deliver to</p>
-                <div class="add_icon">
-                <i class="fa-solid fa-location-dot"></i>  
-                <p class="add-sec">India</p>
+                <div class="add-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p class="add-second" id="addressDisplay">Choose address</p>
                 </div>
             </div>
-          
+
             <div class="nav-search">
                 <select class="search-select">
-                    <option>ALL</option>
+                    <option>All</option>
+                    <option>Deals</option>
+                    <option>Electronics</option>
+                    <option>Fashion</option>
                 </select>
-                <input placeholder="Search Amazon" class="search-input">
-                <div class="search-icon">
+                <input placeholder="Search Amazon" class="search-input" id="searchInput">
+                <div class="search-icon" id="searchBtn">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
-            <div class="country border">
-                <div class="image4">
-                <select class="EN4">
-                    <option>EN</option>
-                </select>
-                </div>
+
+            <!-- Login / Account Trigger -->
+            <div class="nav-signin border" id="openLoginModalBtn">
+                <p><span id="userDisplay" class="nav-first">Hello, sign in</span></p>
+                <p class="nav-second">Account & Lists</p>
             </div>
-            <div class="nav-singin border">
-                <p><span>Hello ,sign in</span></p>
-                <p class="x5B">Account & Lists</p>
-            </div>
-            <div class="return_order border">
+
+            <div class="nav-return border" id="ordersBtn">
                 <p><span>Returns</span></p>
-                <p class="x5B">& Order</p>
+                <p class="nav-second">& Orders</p>
             </div>
-            <div class="nav-cart border">
+
+            <div class="nav-cart border" id="cartBtn">
                 <i class="fa-solid fa-cart-shopping"></i>
-                Cart
+                Cart <span id="cart-count">0</span>
             </div>
         </div>
-        <div class="plane">
-            <div class="plane-all border">
-                <i class="fa-solid fa-bars"></i>
-                All
-            </div>
-            <div class="plane-op1 border">Today's Deals</div>
-            <div class="plane-op1 border">Gift Cards</div>  
-            <div class="plane-op1 border">Sell</div>  
-            <div class="plane-op1 border">Customer Service</div> 
-            <div class="plane-op1 border">Registry</div>  
-            <div class="plane-op6"></div>  
 
-            <div class="plane-deals border">
-                shop deals in Delectonics
+        <!-- Panel -->
+        <div class="panel">
+            <div class="panel-all">
+                <i class="fa-solid fa-bars"></i> All
+            </div>
+            <div class="panel-ops">
+                <p>Today's Deals</p>
+                <p>Customer Service</p>
+                <p>Registry</p>
+                <p>Gift Cards</p>
+                <p>Sell</p>
             </div>
         </div>
     </header>
+
+    <!-- Hero Section -->
     <div class="hero-section">
         <div class="hero-msg">
-        <p>You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery. <a>Click here to go to amazon.in</a></p>
+            <p>You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery. <a href="#">Click here to go to amazon.in</a></p>
         </div>
     </div>
+
+    <!-- Shop Section / Product Grid -->
     <div class="shop-section">
-        <div class="box">
+        <div class="box" data-id="1" data-product="Health & Personal Care" data-price="499" data-image="box1_image.jpg" data-description="Everyday essentials selected to help you feel refreshed, healthy and ready for the day.">
             <div class="box-content">
-                <h2> Health & Personal Care</h2>
-                <div class="box-image" style="background-image:url('box1_image.jpg');"></div>
-                <p>See more</p>
+                <h2>Health & Personal Care</h2>
+                <div class="box-img" style="background-image: url('box1_image.jpg');"></div>
+                <p>View details - ₹499</p>
             </div>
         </div>
-        <div class="box">
-             <div class="box-content">
-                <h2> Clothes</h2>
-                <div class="box-image" style="background-image:url('box2_image.jpg');"></div>
-                <p>See more</p>
-            </div>
-        </div>
-        <div class="box">
+        <div class="box" data-id="2" data-product="Clothes & Wardrobe" data-price="1299" data-image="box2_image.jpg" data-description="Comfortable, versatile wardrobe essentials for a fresh everyday look.">
             <div class="box-content">
-                <h2>Furniture</h2>
-                <div class="box-image" style="background-image:url('box3_image.jpg');"></div>
-                <p>See more</p>
+                <h2>Clothes & Wardrobe Essentials</h2>
+                <div class="box-img" style="background-image: url('box2_image.jpg');"></div>
+                <p>View details - ₹1299</p>
             </div>
         </div>
-        <div class="box">
+        <div class="box" data-id="3" data-product="Furniture & Decor" data-price="4999" data-image="box3_image.jpg" data-description="Practical furniture and decor pieces designed to make your home more inviting.">
             <div class="box-content">
-                <h2> Electronic</h2>
-                <div class="box-image" style="background-image:url('box4_image.jpg');"></div>
-                <p>See more</p>
+                <h2>Furniture & Decor</h2>
+                <div class="box-img" style="background-image: url('box3_image.jpg');"></div>
+                <p>View details - ₹4999</p>
             </div>
         </div>
-        <div class="box">
+        <div class="box" data-id="4" data-product="Smartphones & Electronics" data-price="89999" data-image="box4_image.jpg" data-description="Latest electronics with dependable performance for work, entertainment and daily life.">
+            <div class="box-content">
+                <h2>Smartphones & Electronics</h2>
+                <div class="box-img" style="background-image: url('box4_image.jpg');"></div>
+                <p>View details - ₹89999</p>
+            </div>
+        </div>
+        <div class="box" data-id="5" data-product="Beauty picks" data-price="799" data-image="box5_image.jpg" data-description="Popular beauty essentials for a simple, feel-good self-care routine.">
             <div class="box-content">
                 <h2>Beauty picks</h2>
-                <div class="box-image" style="background-image:url('box5_image.jpg');"></div>
-                <p>See more</p>
+                <div class="box-img" style="background-image: url('box5_image.jpg');"></div>
+                <p>View details - ₹799</p>
             </div>
         </div>
-        <div class="box">
-             <div class="box-content">
-                <h2> Pet Care</h2>
-                <div class="box-image" style="background-image:url('box6_image.jpg');"></div>
-                <p>See more</p>
-            </div>
-        </div>
-        <div class="box">
+        <div class="box" data-id="6" data-product="Pet Care" data-price="599" data-image="box6_image.jpg" data-description="Useful pet-care supplies chosen to keep your companion happy and comfortable.">
             <div class="box-content">
-                <h2> Toys</h2>
-                <div class="box-image" style="background-image:url('box7_image.jpg');"></div>
-                <p>See more</p>
+                <h2>Pet Care</h2>
+                <div class="box-img" style="background-image: url('box6_image.jpg');"></div>
+                <p>View details - ₹599</p>
             </div>
         </div>
-        <div class="box">
+        <div class="box" data-id="7" data-product="New Arrivals in Toys" data-price="999" data-image="box7_image.jpg" data-description="Fun new toys that encourage imagination, play and discovery.">
+            <div class="box-content">
+                <h2>New Arrivals in Toys</h2>
+                <div class="box-img" style="background-image: url('box7_image.jpg');"></div>
+                <p>View details - ₹999</p>
+            </div>
+        </div>
+        <div class="box" data-id="8" data-product="Discover Fashion Trends" data-price="1499" data-image="box8_image.jpg" data-description="On-trend fashion picks to elevate your wardrobe in every season.">
             <div class="box-content">
                 <h2>Discover Fashion Trends</h2>
-                <div class="box-image" style="background-image:url('box8_image.jpg');"></div>
-                <p>See more</p>
+                <div class="box-img" style="background-image: url('box8_image.jpg');"></div>
+                <p>View details - ₹1499</p>
             </div>
         </div>
     </div>
+
+    <!-- Product details popup -->
+    <div id="productModal" class="modal" aria-hidden="true">
+        <div class="modal-content product-modal-content" role="dialog" aria-modal="true" aria-labelledby="product-title">
+            <button class="close-product modal-close" aria-label="Close product details">&times;</button>
+            <div class="product-detail-layout">
+                <img id="product-image" src="" alt="">
+                <div class="product-detail-info">
+                    <p class="product-tag">Amazon's choice</p>
+                    <h2 id="product-title"></h2>
+                    <div class="stars" aria-label="Rated 4.4 out of 5">★★★★<span>★</span> <a href="#">4.4</a></div>
+                    <p id="product-description"></p>
+                    <p class="detail-price">₹<span id="product-price"></span></p>
+                    <p class="stock">In stock</p>
+                    <button id="add-to-cart-btn" class="primary-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal Popup -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content cart-modal-content">
+            <span class="close-cart">&times;</span>
+            <h2>Your Shopping Cart</h2>
+            <div id="cart-items-container">
+                <p>Your Amazon Cart is empty.</p>
+            </div>
+            <div class="cart-summary">
+                <h3>Total: ₹<span id="cart-total">0</span></h3>
+                <button id="checkout-btn">Proceed to Buy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Saved delivery address -->
+    <div id="addressModal" class="modal" aria-hidden="true">
+        <div class="modal-content small-modal" role="dialog" aria-modal="true" aria-labelledby="address-heading">
+            <button class="close-address modal-close" aria-label="Close address form">&times;</button>
+            <h2 id="address-heading">Delivery address</h2>
+            <form id="addressForm" class="address-form">
+                <label for="fullName">Full name</label>
+                <input id="fullName" required placeholder="Your name">
+                <label for="addressLine">House / street / area</label>
+                <textarea id="addressLine" required placeholder="Full delivery address"></textarea>
+                <div class="form-row">
+                    <div><label for="city">City</label><input id="city" required></div>
+                    <div><label for="pincode">PIN code</label><input id="pincode" inputmode="numeric" pattern="[0-9]{6}" required></div>
+                </div>
+                <button class="primary-btn" type="submit">Save address</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order history -->
+    <div id="ordersModal" class="modal" aria-hidden="true">
+        <div class="modal-content orders-modal-content" role="dialog" aria-modal="true" aria-labelledby="orders-heading">
+            <button class="close-orders modal-close" aria-label="Close orders">&times;</button>
+            <h2 id="orders-heading">Your Orders</h2>
+            <div id="orders-container"></div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <!-- Footer -->
     <footer>
-        <div class="foot-panel1">
+        <div class="foot-panel1" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
             Back to Top
         </div>
         <div class="foot-panel2">
             <ul>
-                  <p> Get to Know Us</p>
-                  <a>Careers</a>
-                  <a>Blog</a>
-                  <a>About Amazon</a>
-                  <a>Investor Relations</a>
-                  <a>Amazon Devices</a>
-                  <a>Amazon Science</a>
+                <p>Get to Know Us</p>
+                <a>Careers</a><a>Blog</a><a>About Amazon</a>
             </ul>
             <ul>
                 <p>Make Money with Us</p>
-                <a>Sell products on Amazon</a>
-                <a>Sell on Amazon Business</a>
-                <a>Sell apps on Amazon</a>
-                <a>Become an Affiliate</a>
-                <a>Advertise Your Products</a>
-                <a>Self-Publish with Us</a>
-                <a>Host an Amazon Hub</a>
+                <a>Sell products on Amazon</a><a>Protect and Build Your Brand</a>
             </ul>
             <ul>
-                <P>Amazon Payment Products</P>
-                <a>Amazon Business Card</a>
-                <a>Shop with Points</a>
-                <a>Reload Your Balance</a>
-                <a>Amazon Currency Converter</a>
+                <p>Amazon Payment Products</p>
+                <a>Amazon Business Card</a><a>Reload Your Balance</a>
             </ul>
             <ul>
                 <p>Let Us Help You</p>
-                <a>Your Account</a>
-                <a>Your Orders</a>
-                <a>Shipping Rates & Policies</a>
-                <a>Returns & Replacements</a>
-                <a>Manage Your Content and Devices</a>
-                <a>Help</a>
+                <a>Amazon and COVID-19</a><a>Shipping Rates & Policies</a><a>Returns & Replacements</a>
             </ul>
         </div>
         <div class="foot-panel3">
@@ -176,15 +227,16 @@
         </div>
         <div class="foot-panel4">
             <div class="pages">
-                <a>Condition of use</a>
+                <a>Conditions of Use</a>
                 <a>Privacy Notice</a>
-                <a>Your Ads Privcy Chocies</a>
+                <a>Your Ads Privacy Choices</a>
             </div>
-            <div class="copy-right">
-                <a>© 1996-2026, Amazon.com, Inc. or its affiliates</a>
+            <div class="copyright">
+                © 1996-2026, Amazon.com, Inc. or its affiliates
             </div>
         </div>
     </footer>
-    
+
+    <script src="script.js"></script>
 </body>
 </html>

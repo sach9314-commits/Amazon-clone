@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in - Amazon Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        .login-logo {
+            background-image: url('amazon_logo.png'); /* Ensure amazon_logo.png is in the same folder */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 40px;
+            width: 100px;
+            margin-bottom: 20px;
+            filter: brightness(0); /* Makes logo dark for login page */
+        }
+        .login-container {
+            width: 350px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px 26px;
+        }
+        .login-container p { font-size: 13px; line-height: 1.45; margin-bottom: 18px; }
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 13px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #a6a6a6;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        .continue-btn {
+            background-color: #ffd814;
+            border: 1px solid #fcd200;
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .continue-btn:hover {
+            background-color: #f7ca00;
+        }
+        .error { display: none; color: #c40000; font-size: 12px; margin: -8px 0 12px; }
+        .notice { font-size: 12px; color: #565959; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html"><div class="login-logo"></div></a>
+
+    <div class="login-container">
+        <h1>Sign in</h1>
+        <form id="standaloneLoginForm">
+            <label for="userEmailInput">Email or mobile phone number</label>
+            <input type="text" id="userEmailInput" required autocomplete="username" placeholder="Enter email or phone number">
+            <div class="error" id="loginError">Please enter a valid email address or 10-digit mobile number.</div>
+            <button type="submit" class="continue-btn">Continue</button>
+        </form>
+        <p class="notice">By continuing, you agree to this Amazon Clone's demo terms. No password or real payment is collected.</p>
+    </div>
+
+    <script>
+        const form = document.getElementById("standaloneLoginForm");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const input = document.getElementById("userEmailInput");
+            const value = input.value.trim();
+            const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+            const validPhone = /^\d{10}$/.test(value.replace(/[\s-]/g, ""));
+            document.getElementById("loginError").style.display = validEmail || validPhone ? "none" : "block";
+            if (!validEmail && !validPhone) return;
+            localStorage.setItem("amazon_user", value);
+            window.location.replace("index.html");
+        });
+    </script>
+
+</body>
+</html>
